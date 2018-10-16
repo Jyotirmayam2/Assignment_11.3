@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            padding: 5px;
+        }
+        span{
+            display: block;
+            /* animation name, duration, timing function,interation count,direction */
+            animation:blinkingText 1s cubic-bezier(0.51, 1.23, 1, 0.11) infinite alternate;
+        }
+        /* @50% these styles will be applied */
+        @keyframes blinkingText{
+            50%{color: red; opacity: 0.5;}
+        }
+    </style>
+</head>
+<body>
+    <a id="google" target="_self" href="https://www.w3resource.com">google</a>
+    <div id="attrs"></div>
+    <button onclick="Show()">Show Attributes of link</button>
+    <button onclick="Remove()">Remove Result</button>
+
+    <script>
+        var div = document.getElementById("attrs");
+        // Showing the attribute values of anchor tag in div with id attrs when button with text Show 
+        // Attributes of link is clicked
+        function Show(){
+            //getting attributes
+            var a = document.getElementById("google").getAttribute("id");
+            var b = document.getElementById("google").getAttribute("target");
+            var c = document.getElementById("google").getAttribute("href");
+            
+            //setting inner html
+            div.innerHTML = "<span>id: " + a + "</span>" + "<span>target: " + b + "</span>" + "<span>href: " + c + "</span>";
+        }
+
+        // Remove the html of div with id attrs when button with text Remove Result is clicked
+        function Remove(){
+            //Below commented lines will also work. 
+            //It'll loop through as many times as many span will be available inside the div
+            // & keep on removing it from the div
+
+            // var span = document.getElementsByTagName("span");
+            // var len = span.length;
+            // for(var i=0;i<len;i++){
+            //     div.removeChild(span[0]);
+            // }
+
+            //Or below one which will remove all the elements inside the div
+            div.innerHTML="";
+        }
+    </script>
+</body>
+</html>
